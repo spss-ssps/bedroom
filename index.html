@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>bedroom</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <img src="src/bedroom.png" id="bedroom" alt="bedroom" />
+    <img src="src/deskchair.png" id="deskchair" alt="deskchair" />
+
+    <!-- journal image -->
+    <img src="src/journal.png" alt="Journal" id="journal" class="clickable-journal" />
+
+    <!-- journal UI -->
+    <div id="journal-modal" class="journal-modal hidden">
+    <div class="journal-container">
+        <button id="close-journal" class="close-btn">&times;</button>
+
+        <div id="current-date" class="journal-date"></div>
+
+        <textarea id="journal-text" placeholder="mmmm..."></textarea>
+        <button onclick="saveJournal()">save</button>
+    </div>
+    </div>
+
+  <script src="journal.js"></script>
+  <script src="time.js"></script>
+</body>
+</html>
+
