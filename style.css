@@ -1,6 +1,11 @@
+:root {
+    --color-top: #87ceeb;
+    --color-bottom: #fceabb;
+  }
+
 body {
     margin: 0;
-    background-color: #252a3a;
+    background-color: #000000;
     transition: background-color 2s ease;
     font-family: sans-serif;
   }
@@ -114,5 +119,15 @@ body {
     font-size: 14px;
     margin-bottom: 8px;
     color: #ffffff;
+  }
+  .skybox {
+    width: 380px;
+    height: 250px;
+    position: fixed;
+    top: 20%;  /* Moved up from 50% */
+    right: 35%; /* Moved more to right by decreasing from 40% */
+    z-index: -1;
+    background: linear-gradient(to bottom, var(--color-top), var(--color-bottom));
+    transition: background 1s linear;
   }
   
