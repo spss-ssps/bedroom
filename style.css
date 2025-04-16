@@ -96,6 +96,36 @@ body {
         border-radius: 4px;
  }
 
+ #laptop{
+  position: fixed;
+  bottom: 32%;
+  right: 29%;
+  width: 8%;
+  height: auto;
+  z-index: 9;
+}
+
+  #laptop:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  #desktop {
+    position: fixed;
+    top: 50%;
+    left: 52.7%; /* Moved from 50% to 55% to shift right */
+    transform: translate(-50%, -50%);
+    width: 33%;
+    height: auto;
+    z-index: 11;
+  }
+  #tutorial{
+    position: fixed;
+    width: 55%;
+    height: auto;
+    z-index: 13;
+  }
+
 .clickable-journal {
     /* width: 100px; */
     cursor: pointer;
