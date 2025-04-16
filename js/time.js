@@ -4,7 +4,7 @@ const DAY = {
   };
   
   const NIGHT = {
-    top: [10, 10, 54],       
+    top: [8, 8, 46],       
     bottom: [0, 0, 50]
   };
   

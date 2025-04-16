@@ -69,8 +69,6 @@ body {
     cursor: pointer;
     transform: scale(1.05);
   }
-
-
 #journal{
     position: fixed;
     bottom: 17%;
@@ -119,12 +117,27 @@ body {
     height: auto;
     z-index: 11;
   }
-  #tutorial{
+  #tutorial {
     position: fixed;
-    width: 55%;
+    top: 38%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    width: 4%;
     height: auto;
-    z-index: 13;
+    z-index: 12;
   }
+  #webdance{
+    position: fixed;
+    top: 38%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    width: 3%;
+    height: auto;
+    z-index: 12;
+  }
+  /* #webdance:hover, #tutorial:hover {
+    cursor: pointer;
+  } */
 
 .clickable-journal {
     /* width: 100px; */
@@ -168,7 +181,7 @@ body {
 
   /* clock */
   .controls {
-    position: absolute;
+    position: fixed;
     top: 13vh;
     right: 43.5vw;
     z-index: 10;
