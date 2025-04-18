@@ -36,12 +36,11 @@ body {
     z-index: 1;
 }
 
-#bookselfside{
+#bookshelfside{
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60%;
+    bottom: 0%;
+    left: 22.55%;
+    width: 5.6%;
     height: auto;
     z-index: 10;
 }
@@ -93,6 +92,19 @@ body {
     height: auto;
     z-index: 1;
 }
+
+#sakura{
+    position: fixed;
+    top: 38%;
+    left: 25%;
+    width: 4%;
+    height: auto;
+    z-index: 7;
+}
+#sakura:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 
 #deskchair:hover{
     cursor: pointer;
