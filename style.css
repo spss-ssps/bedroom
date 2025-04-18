@@ -55,6 +55,35 @@ body {
     z-index: 2;
 } */
 
+#rj {
+  position: fixed;
+  top: 45%;
+  left: 43%;
+  width: 7%;
+  height: auto;
+  z-index: 8;
+}
+#fruit {
+  position: fixed;
+  top: 50%;
+  left: 48%;
+  width: 3%;
+  height: auto;
+  z-index: 9;
+}
+#tata{
+  position: fixed;
+  top: 53%;
+  left: 43%;
+  width: 3%;
+  height: auto;
+  z-index: 10;
+}
+#tata:hover, #rj:hover, #fruit:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
 
 #deskchair{
     position: fixed;
@@ -117,27 +146,39 @@ body {
     height: auto;
     z-index: 11;
   }
+
+  #folder{
+    position: fixed;
+    top: 38%;
+    left: 43%;
+    transform: translate(-50%, -50%);
+    width: 2%;
+    height: auto;
+    z-index: 12;
+  }
   #tutorial {
     position: fixed;
     top: 38%;
-    left: 48%;
+    left: 47%;
     transform: translate(-50%, -50%);
-    width: 4%;
+    width: 3%;
     height: auto;
     z-index: 12;
   }
   #webdance{
     position: fixed;
     top: 38%;
-    left: 54%;
+    left: 51%;
     transform: translate(-50%, -50%);
-    width: 3%;
+    width: 2%;
     height: auto;
     z-index: 12;
   }
-  /* #webdance:hover, #tutorial:hover {
+  #webdance:hover, #tutorial:hover, #folder:hover {
     cursor: pointer;
-  } */
+    transform: translate(-50%, -50%) scale(1.1);
+    transition: transform 0.2s ease;
+  }
 
 .clickable-journal {
     /* width: 100px; */
