@@ -4,6 +4,8 @@ window.addEventListener("DOMContentLoaded", () => {
     fruit: { x: 48, y: 50 },
     tata: { x: 43, y: 53 },
     sakura: { x: 25, y: 38 },
+    libretagise: { x: 46.5, y: 31 },
+
     deskchair: { x: 70, y: 94 }
 
   };

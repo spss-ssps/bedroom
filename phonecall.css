@@ -77,15 +77,15 @@
   }
   #accept{
     position: fixed;
-    top: 5.5%;
+    top: 6%;
     right: 7%;
-    width: 3%;
+    width: 2.5%;
     z-index: 101;
   }
   #decline{
     position: fixed;
-    top: 5.5%;
+    top: 6%;
     right: 3%;
-    width: 3%;
+    width: 2.5%;
     z-index: 101;
   }
