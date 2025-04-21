@@ -4,68 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>bedroom</title>
+
+
   <link rel="stylesheet" href="style.css" />
-  
+  <link rel="stylesheet" href="phonecall.css" />
+  <link rel="stylesheet" href="journal.css" />
+  <link rel="stylesheet" href="laptop.css" />
 </head>
 <body>
 
-    <div class="skybox"></div>
-    <img src="src/bedroom.png" id="bedroom" alt="bedroom" />
-    <img src="src/bookshelfside.png" id="bookshelfside" alt="bookshelfside" />
+  <!-- Sky & Base Room -->
+  <div class="skybox"></div>
+  <img src="src/bedroom.png" id="bedroom" alt="bedroom" />
+  <img src="src/bookshelfside.png" id="bookshelfside" alt="bookshelf side" />
 
-    <!-- objects -->
-    <img src="src/deskchair.png" id="deskchair" alt="deskchair" />
-    <!-- <img src="src/desk.png" id="desk" alt="desk" /> -->
-    <img src="src/laptop.png" id="laptop" alt="laptop" />
-    <!-- pillows -->
-     <img src="src/rj.png" class= "pillow" id="rj" alt="aplaca plushy" />
-     <img src="src/fruit.png" class= "pillow" id="fruit" alt="fruit pillow" />
-     <img src="src/tata.png" class= "pillow" id="tata" alt="alien creature pillow" />
+  <!-- Furniture -->
+  <img src="src/laptop.png" id="laptop" alt="laptop" />
 
-     <!-- books -->
-      <img src="src/sakura.png" id="sakura" alt="sakura card captor volume 1" />
+  <!-- Draggable Objects -->
+  <img id="rj" class="draggable" src="src/rj.png" alt="rj pillow" />
+  <img id="fruit" class="draggable" src="src/fruit.png" alt="fruit pillow" />
+  <img id="tata" class="draggable" src="src/tata.png" alt="tata pillow" />
+  <img id="sakura" class="draggable" src="src/sakura.png" alt="sakura pillow" />
+  <img id="deskchair" src="src/deskchair.png" alt="desk chair" />
 
-<!-- laptop screen -->
-    <div id="laptop-screen" class="hidden">
-        
-      <img src="src/desktop.png" id="desktop" alt="desktop" />
-      <a href="https://tutorial.sofiasweb.art" target="_blank"><img src="src/tutorial.png" id="tutorial" alt="star"/></a>
-      <a href="https://webdance.sofiasweb.art" target="_blank"><img src="src/webdance.png" id="webdance" alt="camera" /></a>
-      <img src="src/folder.png" id="folder" alt="light blue folder" />
-    
-    </div>
+  <!-- Laptop Screen -->
+  <div id="laptop-screen" class="hidden">
+    <img src="src/desktop.png" id="desktop" alt="desktop" />
+    <a href="https://tutorial.sofiasweb.art" target="_blank">
+      <img src="src/tutorial.png" id="tutorial" alt="tutorial link" />
+    </a>
+    <a href="https://webdance.sofiasweb.art" target="_blank">
+      <img src="src/webdance.png" id="webdance" alt="webdance link" />
+    </a>
+    <img src="src/folder.png" id="folder" alt="light blue folder" />
+  </div>
 
-
-
-    <!-- journal image -->
-    <img src="src/journal.png" alt="Journal" id="journal" class="clickable-journal" />
-
-    <!-- journal UI -->
-    <div id="journal-modal" class="journal-modal hidden">
+  <!-- Journal -->
+  <img src="src/journal.png" alt="journal" id="journal" class="clickable-journal" />
+  <div id="journal-modal" class="journal-modal hidden">
     <div class="journal-container">
-        <!-- <button id="close-journal" class="close-btn">&times;</button> -->
-
-        <div id="current-date" class="journal-date"></div>
-
-        <textarea id="journal-text" placeholder="mmmm..."></textarea>
-        <!-- <button onclick="saveJournal()" style="font-family: 'Pixelify Sans', sans-serif;">save</button> -->
+      <div id="current-date" class="journal-date"></div>
+      <textarea id="journal-text" placeholder="mmmm..."></textarea>
     </div>
+  </div>
+
+  <!-- Clock -->
+  <div class="controls">
+    <input type="text" id="manualTime" placeholder="hh:mm" />
+  </div>
+
+  <!-- Phone Call -->
+  <img src="src/notification-abuelita.png" id="message-nonna" alt="call notification" />
+  <img src="src/accept.png" id="accept" alt="accept call" onclick="acceptMessage()" />
+  <img src="src/decline.png" id="decline" alt="decline call" onclick="rejectMessage()" />
+
+  <div id="message-content" style="display: none;">
+    <div class="message-bubble user">
+      <p>Abue! hola hola, como estas? que hiciste hoy?</p>
     </div>
+    <div class="message-bubble abuelita">
+      <p>tranquila, acá con tu abuelo</p>
+    </div>
+    <div class="message-bubble abuelito">
+      <p>hola hijita</p>
+    </div>
+    <div class="message-bubble user">
+      <p>cuentame entonces…</p>
+    </div>
+  </div>
 
-    <!-- clock -->
-    <div class="controls">
-        <!-- <div> -->
-          <input type="text" id="manualTime" placeholder="hh:mm" />
-        <!-- </div> -->
-        <!-- <div class="buttons">
-          <button id="realTimeBtn">Use Real Time</button>
-        </div> -->
-      </div>
-      
-
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
   <script src="js/journal.js"></script>
   <script src="js/time.js"></script>
   <script src="js/laptop.js"></script>
+  <script src="js/drag.js"></script>
+  <script src="js/call.js"></script>
+
 </body>
 </html>
-
