@@ -3,12 +3,13 @@ window.addEventListener("DOMContentLoaded", () => {
     rj: { x: 43, y: 45 },
     fruit: { x: 48, y: 50 },
     tata: { x: 43, y: 53 },
-    sakura: { x: 25, y: 38 },
-    libretagise: { x: 46.5, y: 31 },
-
-    deskchair: { x: 70, y: 94 }
-
+    sakura: { x: 5, y: 38 },
+    libretagise: { x: 15, y: 48},
+    meret: { x: 8, y: 38 },
   };
+
+  const bedroom = document.getElementById('bedroom');
+  const skybox = document.querySelector('.skybox');
 
   const lastVisit = localStorage.getItem("lastVisit");
   const now = new Date();
@@ -20,31 +21,49 @@ window.addEventListener("DOMContentLoaded", () => {
     daysMissed = Math.floor(diffTime / (1000 * 60 * 60 * 24));
   }
 
-  // Auto-unlock logic
-const allIds = Object.keys(correctPositions);
-
-if (daysMissed > 2) {
-  const numToUnlock = Math.min((daysMissed - 2) * 2, allIds.length);
-
-  const lockedItems = allIds.filter(id => localStorage.getItem(`${id}_locked`) === "true");
-  const shuffled = lockedItems.sort(() => 0.5 - Math.random());
-  const toUnlock = shuffled.slice(0, numToUnlock);
-
-  toUnlock.forEach(id => {
-    localStorage.setItem(`${id}_locked`, "false");
-  });
-}
-
+  const allIds = Object.keys(correctPositions);
+  if (daysMissed > 2) {
+    const numToUnlock = Math.min((daysMissed - 2) * 2, allIds.length);
+    const lockedItems = allIds.filter(id => localStorage.getItem(`${id}_locked`) === "true");
+    const shuffled = lockedItems.sort(() => 0.5 - Math.random());
+    const toUnlock = shuffled.slice(0, numToUnlock);
+    toUnlock.forEach(id => localStorage.setItem(`${id}_locked`, "false"));
+  }
 
   localStorage.setItem("lastVisit", now.toISOString());
 
-  // 💡 Scatter images randomly within the screen
-  function scatterItem(el, id) {
-    const maxX = window.innerWidth - el.offsetWidth;
-    const maxY = window.innerHeight - el.offsetHeight;
+  function positionItems() {
+    const bedroomRect = bedroom.getBoundingClientRect();
+    skybox.style.width = `${bedroomRect.width}px`;
+    skybox.style.height = `${bedroomRect.height}px`;
 
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
+    document.querySelectorAll(".draggable").forEach((el) => {
+      const id = el.id;
+      const isLocked = localStorage.getItem(`${id}_locked`) === "true";
+
+      if (correctPositions[id]) {
+        if (isLocked) {
+          const correct = correctPositions[id];
+          const x = bedroomRect.left + (correct.x / 100) * bedroomRect.width;
+          const y = bedroomRect.top + (correct.y / 100) * bedroomRect.height;
+          el.style.left = `${x}px`;
+          el.style.top = `${y}px`;
+          el.dataset.x = x;
+          el.dataset.y = y;
+          el.dataset.locked = "true";
+        } else {
+          scatterItem(el, bedroomRect);
+        }
+      }
+    });
+  }
+
+  function scatterItem(el, bounds) {
+    const maxX = bounds.left + bounds.width - el.offsetWidth;
+    const maxY = bounds.top + bounds.height - el.offsetHeight;
+
+    const randomX = bounds.left + Math.random() * (maxX - bounds.left);
+    const randomY = bounds.top + Math.random() * (maxY - bounds.top);
 
     el.style.left = `${randomX}px`;
     el.style.top = `${randomY}px`;
@@ -55,35 +74,19 @@ if (daysMissed > 2) {
 
   function checkSnap(el, id) {
     const correct = correctPositions[id];
-    const correctX = (correct.x / 100) * window.innerWidth;
-    const correctY = (correct.y / 100) * window.innerHeight;
+    const bedroomRect = bedroom.getBoundingClientRect();
+    const correctX = bedroomRect.left + (correct.x / 100) * bedroomRect.width;
+    const correctY = bedroomRect.top + (correct.y / 100) * bedroomRect.height;
 
     const dx = parseFloat(el.dataset.x || 0) - correctX;
     const dy = parseFloat(el.dataset.y || 0) - correctY;
     const dist = Math.sqrt(dx * dx + dy * dy);
-    return dist < 50; // pixel threshold
+    return dist < 50;
   }
 
-  // Position elements
-  document.querySelectorAll(".draggable").forEach((el) => {
-    const id = el.id;
-    const isLocked = localStorage.getItem(`${id}_locked`) === "true";
+  positionItems(); // initial call
+  window.addEventListener("resize", positionItems);
 
-    if (isLocked) {
-      const correct = correctPositions[id];
-      const x = (correct.x / 100) * window.innerWidth;
-      const y = (correct.y / 100) * window.innerHeight;
-      el.style.left = `${x}px`;
-      el.style.top = `${y}px`;
-      el.dataset.x = x;
-      el.dataset.y = y;
-      el.dataset.locked = "true";
-    } else {
-      scatterItem(el, id);
-    }
-  });
-
-  // Draggable interaction
   interact('.draggable').draggable({
     listeners: {
       move(event) {
@@ -104,8 +107,9 @@ if (daysMissed > 2) {
 
         if (checkSnap(el, id)) {
           const correct = correctPositions[id];
-          const x = (correct.x / 100) * window.innerWidth;
-          const y = (correct.y / 100) * window.innerHeight;
+          const bedroomRect = bedroom.getBoundingClientRect();
+          const x = bedroomRect.left + (correct.x / 100) * bedroomRect.width;
+          const y = bedroomRect.top + (correct.y / 100) * bedroomRect.height;
 
           el.style.left = `${x}px`;
           el.style.top = `${y}px`;
@@ -113,11 +117,28 @@ if (daysMissed > 2) {
           el.dataset.y = y;
           el.dataset.locked = "true";
           localStorage.setItem(`${id}_locked`, "true");
+
+          // Check if sakura is placed correctly and set the flag
+          if (id === 'sakura' && checkSnap(el, id)) {
+            localStorage.setItem("sakura_placed", "true");  // Set the flag for sakura placement
+          }
         }
       }
     }
   });
 });
+
+// // Uncomment this block to clear all localStorage for testing purposes
+// /*
+function clearLocalStorage() {
+  localStorage.clear(); // This clears all items in localStorage
+  console.log('All LocalStorage items cleared');
+}
+
+// Call this function in the console to clear storage
+clearLocalStorage();
+
+
 
 // Object.keys(localStorage).forEach(key => {
 //   if (key.endsWith('_locked')) {

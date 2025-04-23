@@ -1,9 +1,6 @@
-// Time to trigger the message
-const MESSAGE_HOUR = 23;
-const MESSAGE_MINUTE = 7;
+const MESSAGE_HOUR = 10;
+const MESSAGE_MINUTE = 35;
 
-
-// Check if the message should be shown
 function checkAndShowMessage(currentHour, currentMinute) {
   const now = new Date();
   const acceptedToday = localStorage.getItem("acceptedMessageDate") === now.toDateString();
@@ -13,23 +10,29 @@ function checkAndShowMessage(currentHour, currentMinute) {
     currentHour === MESSAGE_HOUR &&
     currentMinute === MESSAGE_MINUTE
   ) {
-    const popup = document.getElementById("message-popup");
-    if (popup) popup.style.display = "block";
+    document.getElementById("message-nonna").style.display = "block";
+    document.getElementById("accept").style.display = "block";
+    document.getElementById("decline").style.display = "block";
   }
 }
 
-// Handle user accepting the message
 function acceptMessage() {
   const now = new Date();
   localStorage.setItem("acceptedMessageDate", now.toDateString());
 
-  const popup = document.getElementById("message-popup");
-  const content = document.getElementById("message-content");
+  document.getElementById("message-nonna").style.display = "none";
+  document.getElementById("accept").style.display = "none";
+  document.getElementById("decline").style.display = "none";
 
-  if (popup) popup.style.display = "none";
-  if (content) content.style.display = "block";
+  document.getElementById("message-content").style.display = "block";
 }
 
-// Expose the check function globally
+function rejectMessage() {
+  document.getElementById("message-nonna").style.display = "none";
+  document.getElementById("accept").style.display = "none";
+  document.getElementById("decline").style.display = "none";
+}
+
 window.checkAndShowMessage = checkAndShowMessage;
 window.acceptMessage = acceptMessage;
+window.rejectMessage = rejectMessage;

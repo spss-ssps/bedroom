@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>folder</title>
+    <link rel="icon" href="src/folder.png" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Didact+Gothic&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            font-family: 'Pixelify Sans', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        .text {
+            margin: 20px;
+            font-family: 'Pixelify Sans', sans-serif;
+            position: absolute;
+            max-width: 300px;
+            padding: 15px;
+        }
+        .text:hover {
+            z-index: 1000;
+            background-color: #d0cdcd;
+        }
+    </style>
+</head>
+<body>
+    <div id="tennis" class="text">
+        <span>I hate cloudy days. I find them depressing and dull. But sometimes when it is humid enough, the resemblance of home on a summer morning feels comfortable.</span>
+    </div>
+
+    <div class="text">
+        <span>There's a particular spot in the Greenwood Cementery on an upper hill. A singular bench lies there. While it falsely promises a look at the Statue of Liberty, the view is still certainly beautiful.</span>
+    </div>
+
+    <script>
+        // Show sakura-related text if sakura is placed correctly
+        if (localStorage.getItem("sakura_placed") === "true") {
+            const tennisText = document.getElementById("tennis");
+            tennisText.style.display = "block";  // Show the text
+        } else {
+            const tennisText = document.getElementById("tennis");
+            tennisText.style.display = "none";  // Hide the text if sakura isn't placed correctly
+        }
+
+
+        
+        // Position text randomly within a central area of the screen
+        const texts = document.querySelectorAll('.text');
+        texts.forEach(text => {
+            text.style.top = Math.floor(Math.random() * 70) + 10 + 'vh';
+            text.style.left = Math.floor(Math.random() * 70) + 10 + 'vw';
+        });
+    </script>
+    <script src="js/drag.js"></script>
+</body>
+</html>
