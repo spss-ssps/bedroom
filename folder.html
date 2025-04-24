@@ -64,10 +64,10 @@
         // Show rainy video if fruit is placed correctly
         if (localStorage.getItem("fruit_placed") === "true") {
             const rainyVideo = document.getElementById("rainy");
-            rainyVideo.parentElement.style.display = "block";
+            rainyVideo.style.display = "block";
         } else {
             const rainyVideo = document.getElementById("rainy");
-            rainyVideo.parentElement.style.display = "none";
+            rainyVideo.style.display = "none";
         }
 
         
@@ -77,6 +77,11 @@
             text.style.top = Math.floor(Math.random() * 70) + 10 + 'vh';
             text.style.left = Math.floor(Math.random() * 70) + 10 + 'vw';
         });
+
+        if (getComputedStyle(document.body).display === 'none') {
+        console.warn("Body display was 'none', resetting to 'block'.");
+        document.body.style.display = 'block';
+        }
     </script>
     <script src="js/drag.js"></script>
 </body>
