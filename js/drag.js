@@ -1,8 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
   const correctPositions = {
-    rj: { x: 43, y: 45 },
-    fruit: { x: 48, y: 50 },
-    tata: { x: 43, y: 53 },
+    rj: { x: 40, y: 45 },
+    fruit: { x: 50, y: 50 },
+    tata: { x: 39, y: 52 },
     sakura: { x: 5, y: 38 },
     libretagise: { x: 15, y: 48},
     meret: { x: 8, y: 38 },
@@ -119,8 +119,11 @@ window.addEventListener("DOMContentLoaded", () => {
           localStorage.setItem(`${id}_locked`, "true");
 
           // Check if sakura is placed correctly and set the flag
-          if (id === 'sakura' && checkSnap(el, id)) {
+            if (id === 'sakura' && checkSnap(el, id)) {
             localStorage.setItem("sakura_placed", "true");  // Set the flag for sakura placement
+            }
+            if (id === 'fruit' && checkSnap(el, id)) {
+              localStorage.setItem("fruit_placed", "true");
           }
         }
       }
@@ -128,15 +131,12 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// // Uncomment this block to clear all localStorage for testing purposes
-// /*
-function clearLocalStorage() {
-  localStorage.clear(); // This clears all items in localStorage
-  console.log('All LocalStorage items cleared');
-}
-
-// Call this function in the console to clear storage
-clearLocalStorage();
+//clearlocalstorage
+// function clearLocalStorage() {
+//   localStorage.clear();
+//   console.log('All LocalStorage items cleared');
+// }
+// clearLocalStorage();
 
 
 

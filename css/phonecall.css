@@ -1,21 +1,3 @@
-/* Initially hide the message popup and notification */
-#message-popup {
-  display: none;
-}
-
-#message-nonna {
-  display: none;
-}
-
-#accept {
-  display: none;
-}
-
-#decline {
-  display: none;
-}
-
-/* Message content styles */
 #message-content {
   position: fixed;
   top: 50%;
@@ -86,17 +68,34 @@
 .message-bubble:nth-child(5) { animation-delay: 1.3s; }
 .message-bubble:nth-child(n+6) { animation-delay: calc(0.3s * (var(--n) - 5)); }
 
-#message-nonna {
+.notification {
+  font-family: 'Pixelify Sans', sans-serif;
   position: fixed;
-  top: 5%;
-  right: 1%;
+}
+
+.notification #message-nonna {
+  position: fixed;
+  top: 10%;
+  right: 1.5%;
   width: 20%;
   z-index: 100;
 }
 
+.notification #abuelita{
+  font-size: 10px;
+  color: #000000;
+
+}
+
+.notification #call{
+  font-size: 3px;
+  color: #000000;
+
+}
+
 #accept {
   position: fixed;
-  top: 6%;
+  top: 11%;
   right: 7%;
   width: 2.5%;
   z-index: 101;
@@ -104,7 +103,7 @@
 
 #decline {
   position: fixed;
-  top: 6%;
+  top: 11%;
   right: 3%;
   width: 2.5%;
   z-index: 101;

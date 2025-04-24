@@ -20,27 +20,36 @@
             width: 100vw;
             overflow: hidden;
         }
-        .text {
+        .floating {
+            position: absolute; /* <-- this is the key */
             margin: 20px;
             font-family: 'Pixelify Sans', sans-serif;
-            position: absolute;
             max-width: 300px;
             padding: 15px;
         }
-        .text:hover {
+
+        .floating:hover {
             z-index: 1000;
             background-color: #d0cdcd;
+        }
+
+        .text #rainy {
+
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <div id="tennis" class="text">
-        <span>I hate cloudy days. I find them depressing and dull. But sometimes when it is humid enough, the resemblance of home on a summer morning feels comfortable.</span>
+    <div id="tennis" class="floating">
+        <span>I hate cloudy days. I find them depressing and dull. But sometimes when it is humid enough, the resemblance of home on a summer morning feels refreshing and unexpectedly sunny.</span>
     </div>
 
-    <div class="text">
-        <span>There's a particular spot in the Greenwood Cementery on an upper hill. A singular bench lies there. While it falsely promises a look at the Statue of Liberty, the view is still certainly beautiful.</span>
+    <div class="floating">
+        <span>There's a particular <a href="https://www.google.com/maps/place/Viewpoint+to+Statue+of+Liberty+at+Greenwood/@40.6615983,-73.9887125,15.08z/data=!4m6!3m5!1s0x89c25b7900136317:0xdc37e91485ec19ac!8m2!3d40.6571305!4d-73.9907681!16s%2Fg%2F11flpllysr?entry=tts&g_ep=EgoyMDI1MDQyMi4wIPu8ASoASAFQAw%3D%3D&skid=786dd00f-8a05-4bf0-af42-d11c981b8d5c" target="_blank"><span>spot</span></a> in the Greenwood Cementery on an upper hill. A singular bench lies there. While it falsely promises a look at the Statue of Liberty, the view is still certainly beautiful.</span>
     </div>
+    <video autoplay loop muted class="floating" id="rainy">
+        <source src="src/rainy.mp4" type="video/mp4">
+    </video>
 
     <script>
         // Show sakura-related text if sakura is placed correctly
@@ -52,10 +61,18 @@
             tennisText.style.display = "none";  // Hide the text if sakura isn't placed correctly
         }
 
+        // Show rainy video if fruit is placed correctly
+        if (localStorage.getItem("fruit_placed") === "true") {
+            const rainyVideo = document.getElementById("rainy");
+            rainyVideo.parentElement.style.display = "block";
+        } else {
+            const rainyVideo = document.getElementById("rainy");
+            rainyVideo.parentElement.style.display = "none";
+        }
 
         
         // Position text randomly within a central area of the screen
-        const texts = document.querySelectorAll('.text');
+        const texts = document.querySelectorAll('.floating');
         texts.forEach(text => {
             text.style.top = Math.floor(Math.random() * 70) + 10 + 'vh';
             text.style.left = Math.floor(Math.random() * 70) + 10 + 'vw';

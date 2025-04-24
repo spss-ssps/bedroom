@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="src/journal.png" type="image/png">
+
   <title>bedroom</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,24 +66,28 @@
   
 
   <!-- Phone Call Popup -->
-  <img src="src/notification-abuelita.png" id="message-nonna" alt="call notification" style="display:none;" />
+  <div id="notification" class="notification" style="display:none;">
+  <span id="abuelita">Abuelita</span>
+  <span id="call">call</span>
+  <img src="src/notification-abuelita.png" id="message-nonna" alt="call notification" />
+  </div>
+
   <img src="src/accept.png" id="accept" alt="accept call" onclick="acceptMessage()" style="display:none;" />
   <img src="src/decline.png" id="decline" alt="decline call" onclick="rejectMessage()" style="display:none;" />
   
   <div id="message-content" style="display: none;">
     <div class="message-bubble user">
-      <p>Abue! hola hola, como estas? que hiciste hoy?</p>
+      <p>¡Abue! Hola hola, ¿cómo estás? ¿Qué hiciste hoy?</p>
     </div>
     <div class="message-bubble abuelita">
-      <p>tranquila, acá con tu abuelo</p>
+      <p>Tranquila, acá con tu abuelo.</p>
     </div>
     <div class="message-bubble abuelito">
-      <p>hola hijita</p>
+      <p>Hola hijita.</p>
     </div>
     <div class="message-bubble user">
-      <p>cuentame entonces…</p>
+      <p>Cuéntame entonces…</p>
     </div>
-  </div>
 
 
 
