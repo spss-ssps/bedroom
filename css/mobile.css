@@ -1,0 +1,8 @@
+@media (max-width: 600px) {
+    #spotify-iframe {
+      width: 100%; /* Full width on smaller screens */
+      left: 0; /* Ensure it doesn't go off the screen on small screens */
+      right: 0; /* Ensure it stretches to the right side */
+    }
+  }
+  

@@ -95,7 +95,7 @@
 
 #accept {
   position: fixed;
-  top: 11%;
+  top: 50%;
   right: 7%;
   width: 2.5%;
   z-index: 101;
@@ -103,7 +103,7 @@
 
 #decline {
   position: fixed;
-  top: 11%;
+  top: 50%;
   right: 3%;
   width: 2.5%;
   z-index: 101;
