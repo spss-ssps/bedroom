@@ -5,6 +5,12 @@
     width: 8%;
     height: auto;
     z-index: 10;
+    user-drag: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: auto;
   }
 
   #journal:hover{

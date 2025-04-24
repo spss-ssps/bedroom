@@ -1,3 +1,10 @@
+#laptop-screen img {
+  user-drag: none;
+  -webkit-user-drag: none;
+  pointer-events: auto; /* ensures clicks still work */
+}
+
+
 #laptop{
     position: fixed;
     bottom: 32%;
@@ -5,6 +12,12 @@
     width: 8%;
     height: auto;
     z-index: 11;
+    user-drag: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: auto;
   }
   
     #laptop:hover{
