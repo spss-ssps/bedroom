@@ -125,11 +125,11 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 //clearlocalstorage
-function clearLocalStorage() {
-  localStorage.clear();
-  console.log('All LocalStorage items cleared');
-}
-clearLocalStorage();
+// function clearLocalStorage() {
+//   localStorage.clear();
+//   console.log('All LocalStorage items cleared');
+// }
+// clearLocalStorage();
 
 
 
