@@ -10,6 +10,8 @@ const correctPositions = {
     libretagise: { x: 15, y: 48 },
     kirby: { x: 4, y: 28 },
     sonny: { x: 15, y: 24 },
+    comb:{ x: 12, y: 60 },
+    scarf:{ x: 52, y: 60 },
 };
 
 function typingAnim(text) {
@@ -85,7 +87,7 @@ function changeIntro(isPageLoad) {
 // Function to check if all items are placed correctly (checking localStorage values)
 function checkAllItemsPlaced() {
     let allCorrect = true;
-    const maxItems = 6; // Number of items
+    const maxItems = 9; // Number of items
     let placedItems = 0;
 
     document.querySelectorAll('.draggable').forEach(item => {

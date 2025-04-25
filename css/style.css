@@ -165,6 +165,18 @@ body {
   z-index: 6; 
 }
 
+#comb{
+  width: 3%;
+  height: auto;
+  z-index: 6; 
+}
+
+#scarf{
+  width: 5%;
+  height: auto;
+  z-index: 6; 
+}
+
 /* #tata:hover, #rj:hover, #fruit:hover, #sakura:hover, #libretagise:hover, #meret:hover {
   cursor: pointer;
   transform: scale(1.05);

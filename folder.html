@@ -57,6 +57,46 @@
             height: auto;
             display: block;
         }
+        #nonnos {
+            height: auto;
+        }
+
+        #madre {
+            width: 10%;
+            height: auto;
+        }
+        #madre img{
+            width: 100%;
+            height: auto;
+        }
+
+        #shampoo {
+            width: 5%;
+            height: auto;
+        }
+        #shampoo img{
+            width: 100%;
+            height: auto;
+        }
+
+        #conditioner {
+            width: 5%;
+            height: auto;
+        }
+
+        #conditioner img{
+            width: 100%;
+            height: auto;
+        }
+
+        #gel {
+            width: 10%;
+            height: auto;
+        }
+        #gel img{
+            width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 
@@ -95,9 +135,36 @@
         <span>holas2</span>
     </div>
 
-    <div id="holas3" class="floating">
-        <span>holas3</span>
+    <div id="ale" class="floating">
+        <span>ale</span>
     </div>
+
+    <div id="curlycut" class="floating">
+        <span>curly cut</span>
+    </div>
+
+    <div id="madre" class="floating">
+        <img src="src/madre.png" alt="amix" />
+    </div>
+
+    <div id="conditioner" class="floating">
+        <img src="src/conditioner.png" alt="amix" />
+    </div>
+
+    <div id="shampoo" class="floating">
+        <img src="src/shampoo.png" alt="amix" />
+    </div>
+
+    <div id="gel" class="floating">
+        <img src="src/gel.png" alt="amix" />
+    </div>
+
+
+    <video autoplay loop muted class="floating" id="nonnos">
+        <source src="src/nonnos.mp4" type="video/mp4">
+    </video>
+
+
 
     <script>
         // Function to check and update elements based on localStorage
@@ -124,8 +191,26 @@
             const holas2 = document.getElementById("holas2"); 
             holas2.style.display = localStorage.getItem("rj_placed") === "true" ? "block" : "none";
 
-            const holas3 = document.getElementById("holas3"); 
-            holas3.style.display = localStorage.getItem("kirby_placed") === "true" ? "block" : "none";
+            const ale = document.getElementById("ale"); 
+            ale.style.display = localStorage.getItem("kirby_placed") === "true" ? "block" : "none";
+
+            const curlycut = document.getElementById("curlycut"); 
+            curlycut.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+
+            const madre = document.getElementById("madre"); 
+            madre.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+
+            const shampoo = document.getElementById("shampoo"); 
+            shampoo.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+
+            const conditioner = document.getElementById("conditioner"); 
+            conditioner.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+
+            const gel = document.getElementById("gel"); 
+            gel.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+
+            const nonnos = document.getElementById("nonnos"); 
+            nonnos.style.display = localStorage.getItem("scarf_placed") === "true" ? "block" : "none";
 
             // Log current state for debugging
             console.log("sakura_placed:", localStorage.getItem("sakura_placed"));
@@ -135,8 +220,15 @@
             console.log("tata_placed:", localStorage.getItem("tata_placed"));
             console.log("rj_placed:", localStorage.getItem("rj_placed"));
             console.log("kirby_placed:", localStorage.getItem("kirby_placed"));
+            console.log("combs_placed:", localStorage.getItem("combs_placed"));
+            console.log("scarf_placed:", localStorage.getItem("scarf_placed"));
         }
 
+        // Set default values if localStorage items don't exist
+        if (localStorage.getItem("combs_placed") === null) {
+            localStorage.setItem("combs_placed", "true");
+        }
+        
         // Initial check when page loads
         updateElementsVisibility();
 
