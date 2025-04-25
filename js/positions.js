@@ -7,7 +7,8 @@ window.itemPositions = {
   tata: { x: 39, y: 52 },
   sakura: { x: 5, y: 38 },
   libretagise: { x: 15, y: 48},
-  kirby: { x: 4, y: 28 }
+  kirby: { x: 4, y: 28 },
+  sonny: { x: 15, y: 24 },
 };
 
 // Keep track of which items have played their sound
@@ -26,6 +27,21 @@ window.playPopSound = function(id) {
   if (id === 'fruit') {
     localStorage.setItem("fruit_placed", "true");
   }
+  if (id === 'sonny') {
+    localStorage.setItem("sonny_placed", "true");
+  }
+  if (id === 'libretagise') {
+    localStorage.setItem("libretagise_placed", "true");
+  }
+    if (id === 'tata') {
+        localStorage.setItem("tata_placed", "true");
+    }
+    if (id === 'rj') {
+        localStorage.setItem("rj_placed", "true");
+    }
+    if (id === 'kirby') {
+        localStorage.setItem("kirby_placed", "true");
+    }
 };
 
 // Helper function to check if all items are in correct positions

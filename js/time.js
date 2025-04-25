@@ -1,11 +1,23 @@
 // Constants for when to show the message
-const CALL_DELAY_MS = 3 * 60 * 1000; // 3 minutes in milliseconds
+const CALL_DELAY_MS = 0.1 * 60 * 1000; // 3 minutes in milliseconds
+console.log(`Phone call will appear in ${CALL_DELAY_MS/1000} seconds (${CALL_DELAY_MS/60000} minutes) if not shown today`);
 
 const manualTimeInput = document.getElementById('manualTime');
 let timeValue = 12;
 let useRealTime = true;
 let pageLoadTime = new Date(); // Track when the page was loaded
 let callScheduled = false; // Track if call is scheduled
+
+// Check if call was already shown today
+const now = new Date();
+const today = now.toDateString();
+const callReceivedToday = localStorage.getItem("callReceivedDate") === today;
+if (callReceivedToday) {
+  console.log("Phone call already shown today - won't appear again until tomorrow");
+} else {
+  const callTime = new Date(now.getTime() + CALL_DELAY_MS);
+  console.log(`Phone call scheduled to appear at: ${callTime.toLocaleTimeString()}`);
+}
 
 // 🔄 Manual time input listener
 manualTimeInput.addEventListener('input', function() {
@@ -74,6 +86,8 @@ function checkAndShowMessage() {
   // Schedule the call if it hasn't been scheduled yet
   if (!callScheduled) {
     callScheduled = true;
+    console.log(`Call timer started. Will appear in ${CALL_DELAY_MS/1000} seconds`);
+    
     setTimeout(() => {
       // Only show if it hasn't been shown today
       if (localStorage.getItem("callReceivedDate") !== today) {
@@ -84,6 +98,8 @@ function checkAndShowMessage() {
         if (messagePopup) messagePopup.style.display = "block";
         if (acceptBtn) acceptBtn.style.display = "block";
         if (declineBtn) declineBtn.style.display = "block";
+        
+        console.log(`PHONE CALL APPEARING NOW: ${new Date().toLocaleTimeString()}`);
         
         // Mark that call has been received today
         localStorage.setItem("callReceivedDate", today);

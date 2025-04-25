@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Didact+Gothic&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Didact+Gothic&family=Pixelify+Sans:wght@400..700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="css/mobile.css" />
     <style>
         body {
@@ -21,6 +24,7 @@
             width: 100vw;
             overflow: hidden;
         }
+
         .floating {
             position: absolute;
             margin: 20px;
@@ -37,30 +41,100 @@
         .text #rainy {
             height: auto;
         }
+
+        #petals {
+            width: 10%;
+            height: auto;
+        }
+
+        #amix {
+            width: 50%;
+            height: auto;
+        }
+
+        #amix img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
+
 <body>
     <div id="tennis" class="floating">
-        <span>I hate cloudy days. I find them depressing and dull. But sometimes when it is humid enough, the resemblance of home on a summer morning feels makes it seem not so bad.</span>
+        <span>I hate cloudy days. I find them depressing and dull. But sometimes when it is humid enough, the
+            resemblance of home on a summer morning feels makes it seem not so bad.</span>
     </div>
 
-    <div class="floating">
-        <span>There's a particular <a href="https://www.google.com/maps/place/Viewpoint+to+Statue+of+Liberty+at+Greenwood/@40.6615983,-73.9887125,15.08z/data=!4m6!3m5!1s0x89c25b7900136317:0xdc37e91485ec19ac!8m2!3d40.6571305!4d-73.9907681!16s%2Fg%2F11flpllysr?entry=tts&g_ep=EgoyMDI1MDQyMi4wIPu8ASoASAFQAw%3D%3D&skid=786dd00f-8a05-4bf0-af42-d11c981b8d5c" target="_blank"><span>spot</span></a> in the Greenwood Cementery on an upper hill. A singular bench lies there. While it falsely promises a look at the Statue of Liberty, the view is still certainly beautiful.</span>
+    <div id="garden" class="floating">
+        <span>There's a particular <a
+                href="https://www.google.com/maps/place/Viewpoint+to+Statue+of+Liberty+at+Greenwood/@40.6615983,-73.9887125,15.08z/data=!4m6!3m5!1s0x89c25b7900136317:0xdc37e91485ec19ac!8m2!3d40.6571305!4d-73.9907681!16s%2Fg%2F11flpllysr?entry=tts&g_ep=EgoyMDI1MDQyMi4wIPu8ASoASAFQAw%3D%3D&skid=786dd00f-8a05-4bf0-af42-d11c981b8d5c"
+                target="_blank"><span>spot</span></a> in the Greenwood Cementery on an upper hill. A singular bench lies
+            there. While it falsely promises a look at the Statue of Liberty, the view is still certainly
+            beautiful.</span>
+        <br>
     </div>
+
+    <div id="amix" class="floating">
+        <img src="src/amix.png" alt="amix" />
+    </div>
+
+    <video autoplay loop muted class="floating" id="petals">
+        <source src="src/petals.mp4" type="video/mp4">
+    </video>
+
     <video autoplay loop muted class="floating" id="rainy">
         <source src="src/rainy.mp4" type="video/mp4">
     </video>
 
+    <div id="holas1" class="floating">
+        <span>holas1</span>
+    </div>
+
+    <div id="holas2" class="floating">
+        <span>holas2</span>
+    </div>
+
+    <div id="holas3" class="floating">
+        <span>holas3</span>
+    </div>
+
     <script>
         // Function to check and update elements based on localStorage
         function updateElementsVisibility() {
-            // Update tennis text visibility
+            // Update element visibility based on localStorage values
             const tennisText = document.getElementById("tennis");
             tennisText.style.display = localStorage.getItem("sakura_placed") === "true" ? "block" : "none";
-            
-            // Update rainy video visibility
+
             const rainyVideo = document.getElementById("rainy");
             rainyVideo.style.display = localStorage.getItem("fruit_placed") === "true" ? "block" : "none";
+
+            const sonnystuff1 = document.getElementById("garden");
+            sonnystuff1.style.display = localStorage.getItem("sonny_placed") === "true" ? "block" : "none";
+
+            const sonnystuff2 = document.getElementById("petals");
+            sonnystuff2.style.display = localStorage.getItem("sonny_placed") === "true" ? "block" : "none";
+
+            const libretastuff = document.getElementById("amix");
+            libretastuff.style.display = localStorage.getItem("libretagise_placed") === "true" ? "block" : "none";
+
+            const holas1 = document.getElementById("holas1"); 
+            holas1.style.display = localStorage.getItem("tata_placed") === "true" ? "block" : "none";
+
+            const holas2 = document.getElementById("holas2"); 
+            holas2.style.display = localStorage.getItem("rj_placed") === "true" ? "block" : "none";
+
+            const holas3 = document.getElementById("holas3"); 
+            holas3.style.display = localStorage.getItem("kirby_placed") === "true" ? "block" : "none";
+
+            // Log current state for debugging
+            console.log("sakura_placed:", localStorage.getItem("sakura_placed"));
+            console.log("fruit_placed:", localStorage.getItem("fruit_placed"));
+            console.log("sonny_placed:", localStorage.getItem("sonny_placed"));
+            console.log("libretagise_placed:", localStorage.getItem("libretagise_placed"));
+            console.log("tata_placed:", localStorage.getItem("tata_placed"));
+            console.log("rj_placed:", localStorage.getItem("rj_placed"));
+            console.log("kirby_placed:", localStorage.getItem("kirby_placed"));
         }
 
         // Initial check when page loads
@@ -69,7 +143,6 @@
         // Listen for changes in localStorage from other tabs/windows
         window.addEventListener('storage', updateElementsVisibility);
 
-        
         // Position text randomly within a central area of the screen
         const texts = document.querySelectorAll('.floating');
         texts.forEach(text => {
@@ -78,10 +151,12 @@
         });
 
         if (getComputedStyle(document.body).display === 'none') {
-        console.warn("Body display was 'none', resetting to 'block'.");
-        document.body.style.display = 'block';
+            console.warn("Body display was 'none', resetting to 'block'.");
+            document.body.style.display = 'block';
         }
     </script>
+    <script src="js/positions.js"></script>
     <script src="js/drag.js"></script>
 </body>
+
 </html>
