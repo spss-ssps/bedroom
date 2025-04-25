@@ -41,7 +41,7 @@ body {
   }
 }
 
-#intro, #intro2 {
+#intro {
   position: fixed;
   top: 20%;
   right: 2%;

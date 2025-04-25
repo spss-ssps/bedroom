@@ -1,10 +1,11 @@
 // Constants for when to show the message
-const MESSAGE_HOUR = 12;
-const MESSAGE_MINUTE = 30;
+const CALL_DELAY_MS = 3 * 60 * 1000; // 3 minutes in milliseconds
 
 const manualTimeInput = document.getElementById('manualTime');
 let timeValue = 12;
 let useRealTime = true;
+let pageLoadTime = new Date(); // Track when the page was loaded
+let callScheduled = false; // Track if call is scheduled
 
 // 🔄 Manual time input listener
 manualTimeInput.addEventListener('input', function() {
@@ -60,22 +61,34 @@ function formatForInput(h, m) {
 }
 
 // 📞 Check if the message should be shown now
-function checkAndShowMessage(currentHour, currentMinute) {
+function checkAndShowMessage() {
   const now = new Date();
-  const acceptedToday = localStorage.getItem("acceptedMessageDate") === now.toDateString();
+  const today = now.toDateString();
+  const callReceivedToday = localStorage.getItem("callReceivedDate") === today;
+  
+  // If call has already been received today, don't show it again
+  if (callReceivedToday) {
+    return;
+  }
+  
+  // Schedule the call if it hasn't been scheduled yet
+  if (!callScheduled) {
+    callScheduled = true;
+    setTimeout(() => {
+      // Only show if it hasn't been shown today
+      if (localStorage.getItem("callReceivedDate") !== today) {
+        const messagePopup = document.getElementById("notification");
+        const acceptBtn = document.getElementById("accept");
+        const declineBtn = document.getElementById("decline");
 
-  if (
-    !acceptedToday &&
-    currentHour === MESSAGE_HOUR &&
-    currentMinute === MESSAGE_MINUTE
-  ) {
-    const messagePopup = document.getElementById("notification");
-    const acceptBtn = document.getElementById("accept");
-    const declineBtn = document.getElementById("decline");
-
-    if (messagePopup) messagePopup.style.display = "block";
-    if (acceptBtn) acceptBtn.style.display = "block";
-    if (declineBtn) declineBtn.style.display = "block";
+        if (messagePopup) messagePopup.style.display = "block";
+        if (acceptBtn) acceptBtn.style.display = "block";
+        if (declineBtn) declineBtn.style.display = "block";
+        
+        // Mark that call has been received today
+        localStorage.setItem("callReceivedDate", today);
+      }
+    }, CALL_DELAY_MS);
   }
 }
 
@@ -98,7 +111,7 @@ function loop() {
   }
 
   updateGradient(timeValue);
-  checkAndShowMessage(currentHour, currentMinute);
+  checkAndShowMessage();
 
   requestAnimationFrame(loop);
 }

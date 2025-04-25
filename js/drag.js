@@ -6,11 +6,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const bedroom = document.getElementById('bedroom');
   const skybox = document.querySelector('.skybox');
 
+  // Fix the time difference calculation
   const lastVisit = localStorage.getItem("lastVisit");
   const now = new Date();
   let daysMissed = 0;
 
   if (lastVisit) {
+    // Use lastVisit instead of then
     const then = new Date(lastVisit);
     const diffTime = Math.abs(now - then);
     daysMissed = Math.floor(diffTime / (1000 * 60 * 60 * 24));
@@ -125,11 +127,11 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 //clearlocalstorage
-// function clearLocalStorage() {
-//   localStorage.clear();
-//   console.log('All LocalStorage items cleared');
-// }
-// clearLocalStorage();
+function clearLocalStorage() {
+  localStorage.clear();
+  console.log('All LocalStorage items cleared');
+}
+clearLocalStorage();
 
 
 
