@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="src/bed.png" type="image/png">
 
   <title>bedroom</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Didact+Gothic&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Comfortaa:wght@300..700&family=Didact+Gothic&family=Pixelify+Sans:wght@400..700&display=swap"
+    rel="stylesheet">
 
 
   <link rel="stylesheet" href="css/style.css" />
@@ -20,11 +23,17 @@
   <link rel="stylesheet" href="css/mobile.css" />
 
 </head>
+
 <body>
-  <iframe id="spotify-iframe" src="https://open.spotify.com/embed/playlist/7jiQemqr9EFtd2zlzMEQ7h?utm_source=generator&autoplay=1" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <iframe id="spotify-iframe"
+    src="https://open.spotify.com/embed/playlist/7jiQemqr9EFtd2zlzMEQ7h?utm_source=generator&autoplay=1" frameBorder="0"
+    allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy"></iframe>
+
+  <span id="intro"></span>
 
   <!-- Sky & Base Room -->
-  <div class="skybox"></div>
+  <div class="skybox"></div>`
   <img src="src/bedroom.png" id="bedroom" alt="bedroom" />
   <img src="src/bookshelfside.png" id="bookshelfside" alt="bookshelf side" />
 
@@ -32,14 +41,15 @@
   <img src="src/laptop.png" id="laptop" alt="laptop" />
 
   <!-- Draggable Objects -->
+  <audio id="pop" src="src/pop.mp3"></audio>
   <img id="rj" class="draggable" src="src/rj.png" alt="rj pillow" />
   <img id="fruit" class="draggable" src="src/fruit.png" alt="fruit pillow" />
   <img id="tata" class="draggable" src="src/tata.png" alt="tata pillow" />
   <img id="sakura" class="draggable" src="src/sakura.png" alt="sakura pillow" />
   <img id="libretagise" class="draggable" src="src/libretagise.png" alt="libretagise" />
-  <img id="meret" class="draggable" src="src/meret.png" alt="meret" />
+  <!-- <img id="meret" class="draggable" src="src/meret.png" alt="meret" /> -->
+  <img id="kirby" class="draggable" src="src/kirby.png" alt="kirby" />
 
-  <img id="deskchair" src="src/deskchair.png" alt="desk chair" />
 
   <!-- Laptop Screen -->
   <div id="laptop-screen" class="hidden">
@@ -66,18 +76,18 @@
   <div class="controls">
     <input type="text" id="manualTime" placeholder="hh:mm" />
   </div>
-  
+
 
   <!-- Phone Call Popup -->
   <div id="notification" class="notification" style="display:none;">
-  <span id="abuelita">Abuelita</span>
-  <span id="call">call</span>
-  <img src="src/notification-abuelita.png" id="message-nonna" alt="call notification" />
+    <span id="abuelita">Abuelita</span>
+    <span id="call">call</span>
+    <img src="src/notification-abuelita.png" id="message-nonna" alt="call notification" />
   </div>
 
   <img src="src/accept.png" id="accept" alt="accept call" onclick="acceptMessage()" style="display:none;" />
   <img src="src/decline.png" id="decline" alt="decline call" onclick="rejectMessage()" style="display:none;" />
-  
+
   <div id="message-content" style="display: none;">
     <div class="message-bubble user">
       <p>¡Abue! Hola hola, ¿cómo estás? ¿Qué hiciste hoy?</p>
@@ -94,14 +104,15 @@
 
 
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-  <script src="js/journal.js"></script>
-  <script src="js/time.js"></script>
-  <script src="js/laptop.js"></script>
-  <script src="js/drag.js"></script>
-  <script src="js/call.js"></script>
-  <script src="js/static.js"></script>
-
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="js/positions.js"></script>
+    <script src="js/journal.js"></script>
+    <script src="js/time.js"></script>
+    <script src="js/laptop.js"></script>
+    <script src="js/drag.js"></script>
+    <script src="js/intro.js"></script>
+    <script src="js/call.js"></script>
+    <script src="js/static.js"></script>
 </body>
 </html>

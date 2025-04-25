@@ -22,7 +22,7 @@
             overflow: hidden;
         }
         .floating {
-            position: absolute; /* <-- this is the key */
+            position: absolute;
             margin: 20px;
             font-family: 'Pixelify Sans', sans-serif;
             max-width: 300px;
@@ -35,14 +35,13 @@
         }
 
         .text #rainy {
-
             height: auto;
         }
     </style>
 </head>
 <body>
     <div id="tennis" class="floating">
-        <span>I hate cloudy days. I find them depressing and dull. But sometimes when it is humid enough, the resemblance of home on a summer morning feels refreshing and unexpectedly sunny.</span>
+        <span>I hate cloudy days. I find them depressing and dull. But sometimes when it is humid enough, the resemblance of home on a summer morning feels makes it seem not so bad.</span>
     </div>
 
     <div class="floating">
@@ -53,23 +52,22 @@
     </video>
 
     <script>
-        // Show sakura-related text if sakura is placed correctly
-        if (localStorage.getItem("sakura_placed") === "true") {
+        // Function to check and update elements based on localStorage
+        function updateElementsVisibility() {
+            // Update tennis text visibility
             const tennisText = document.getElementById("tennis");
-            tennisText.style.display = "block";  // Show the text
-        } else {
-            const tennisText = document.getElementById("tennis");
-            tennisText.style.display = "none";  // Hide the text if sakura isn't placed correctly
+            tennisText.style.display = localStorage.getItem("sakura_placed") === "true" ? "block" : "none";
+            
+            // Update rainy video visibility
+            const rainyVideo = document.getElementById("rainy");
+            rainyVideo.style.display = localStorage.getItem("fruit_placed") === "true" ? "block" : "none";
         }
 
-        // Show rainy video if fruit is placed correctly
-        if (localStorage.getItem("fruit_placed") === "true") {
-            const rainyVideo = document.getElementById("rainy");
-            rainyVideo.style.display = "block";
-        } else {
-            const rainyVideo = document.getElementById("rainy");
-            rainyVideo.style.display = "none";
-        }
+        // Initial check when page loads
+        updateElementsVisibility();
+
+        // Listen for changes in localStorage from other tabs/windows
+        window.addEventListener('storage', updateElementsVisibility);
 
         
         // Position text randomly within a central area of the screen

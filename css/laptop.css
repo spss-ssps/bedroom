@@ -1,10 +1,3 @@
-#laptop-screen img {
-  user-drag: none;
-  -webkit-user-drag: none;
-  pointer-events: auto; /* ensures clicks still work */
-}
-
-
 #laptop{
     position: fixed;
     bottom: 32%;

@@ -9,6 +9,58 @@ body {
   background-color: #000000;
   transition: background-color 2s ease;
 }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 15vw;
+  }
+}
+
+@keyframes blink-caret {
+  from, to { border-right-color: transparent; }
+  50% { border-right-color: white; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+#intro, #intro2 {
+  position: fixed;
+  top: 20%;
+  right: 2%;
+  width: 17vw;
+  z-index: 1000;
+  color: white;
+  margin: 0;
+  letter-spacing: .15em;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Add this class to each word in your intro text via JavaScript */
+.word {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  margin-right: 0.25em; /* Add extra spacing between words */
+}
 
 #spotify-iframe {
   position: fixed;
@@ -33,6 +85,10 @@ body {
   transition: background 1s linear;
 }
 
+#pop{
+  volume: 0.5;
+}
+
 #bedroom {
   position: fixed;
   top: 50%;
@@ -46,7 +102,7 @@ body {
 
 #bookshelfside {
   position: fixed;
-  width: 5.6%;
+  width: 5.46%;
   height: auto;
   z-index: 10;
   pointer-events: none;
@@ -60,6 +116,11 @@ body {
 
 .draggable:active {
   cursor: grabbing;
+}
+
+.draggable:hover {
+  cursor: grab;
+  transform: scale(1.05);
 }
 
 #rj {
@@ -80,15 +141,6 @@ body {
   z-index: 10;
 }
 
-#deskchair {
-  position: fixed;
-  bottom: 6%;
-  right: 30%;
-  width: 20%;
-  height: auto;
-  z-index: 1;
-}
-
 #sakura {
   width: 4%;
   height: auto;
@@ -107,7 +159,13 @@ body {
   z-index: 6;
 }
 
-#tata:hover, #rj:hover, #fruit:hover, #sakura:hover, #libretagise:hover, #meret:hover {
+#kirby{
+  width: 4%;
+  height: auto;
+  z-index: 6; 
+}
+
+/* #tata:hover, #rj:hover, #fruit:hover, #sakura:hover, #libretagise:hover, #meret:hover {
   cursor: pointer;
   transform: scale(1.05);
-}
+} */

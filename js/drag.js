@@ -1,12 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const correctPositions = {
-    rj: { x: 40, y: 45 },
-    fruit: { x: 50, y: 50 },
-    tata: { x: 39, y: 52 },
-    sakura: { x: 5, y: 38 },
-    libretagise: { x: 15, y: 48},
-    meret: { x: 8, y: 38 },
-  };
+
+  // Use the shared postions instead of redefining them
+  const correctPositions = window.itemPositions;
 
   const bedroom = document.getElementById('bedroom');
   const skybox = document.querySelector('.skybox');
@@ -105,7 +100,10 @@ window.addEventListener("DOMContentLoaded", () => {
         const el = event.target;
         const id = el.id;
 
-        if (checkSnap(el, id)) {
+        // Store the result to avoid calling checkSnap multiple times
+        const isInCorrectPosition = checkSnap(el, id);
+
+        if (isInCorrectPosition) {
           const correct = correctPositions[id];
           const bedroomRect = bedroom.getBoundingClientRect();
           const x = bedroomRect.left + (correct.x / 100) * bedroomRect.width;
@@ -118,13 +116,8 @@ window.addEventListener("DOMContentLoaded", () => {
           el.dataset.locked = "true";
           localStorage.setItem(`${id}_locked`, "true");
 
-          // Check if sakura is placed correctly and set the flag
-            if (id === 'sakura' && checkSnap(el, id)) {
-            localStorage.setItem("sakura_placed", "true");  // Set the flag for sakura placement
-            }
-            if (id === 'fruit' && checkSnap(el, id)) {
-              localStorage.setItem("fruit_placed", "true");
-          }
+          // Play sound using the shared function from positions.js
+          window.playPopSound(id);
         }
       }
     }
@@ -132,11 +125,11 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 //clearlocalstorage
-// function clearLocalStorage() {
-//   localStorage.clear();
-//   console.log('All LocalStorage items cleared');
-// }
-// clearLocalStorage();
+function clearLocalStorage() {
+  localStorage.clear();
+  console.log('All LocalStorage items cleared');
+}
+clearLocalStorage();
 
 
 
