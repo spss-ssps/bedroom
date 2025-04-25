@@ -1,5 +1,5 @@
 // Constants for when to show the message
-const CALL_DELAY_MS = 0.1 * 60 * 1000; // 3 minutes in milliseconds
+const CALL_DELAY_MS = 2 * 60 * 1000; // 3 minutes in milliseconds
 console.log(`Phone call will appear in ${CALL_DELAY_MS/1000} seconds (${CALL_DELAY_MS/60000} minutes) if not shown today`);
 
 const manualTimeInput = document.getElementById('manualTime');
