@@ -242,19 +242,19 @@
             ale.style.display = localStorage.getItem("kirby_placed") === "true" ? "block" : "none";
 
             const curlycut = document.getElementById("curlycut"); 
-            curlycut.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+            curlycut.style.display = localStorage.getItem("comb_placed") === "true" ? "block" : "none";
 
             const madre = document.getElementById("madre"); 
-            madre.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+            madre.style.display = localStorage.getItem("comb_placed") === "true" ? "block" : "none";
 
             const shampoo = document.getElementById("shampoo"); 
-            shampoo.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+            shampoo.style.display = localStorage.getItem("comb_placed") === "true" ? "block" : "none";
 
             const conditioner = document.getElementById("conditioner"); 
-            conditioner.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+            conditioner.style.display = localStorage.getItem("comb_placed") === "true" ? "block" : "none";
 
             const gel = document.getElementById("gel"); 
-            gel.style.display = localStorage.getItem("combs_placed") === "true" ? "block" : "none";
+            gel.style.display = localStorage.getItem("comb_placed") === "true" ? "block" : "none";
 
             const nonnos = document.getElementById("nonnos"); 
             nonnos.style.display = localStorage.getItem("scarf_placed") === "true" ? "block" : "none";
@@ -267,14 +267,14 @@
             console.log("tata_placed:", localStorage.getItem("tata_placed"));
             console.log("rj_placed:", localStorage.getItem("rj_placed"));
             console.log("kirby_placed:", localStorage.getItem("kirby_placed"));
-            console.log("combs_placed:", localStorage.getItem("combs_placed"));
+            console.log("comb_placed:", localStorage.getItem("comb_placed"));
             console.log("scarf_placed:", localStorage.getItem("scarf_placed"));
         }
 
         // Set default values if localStorage items don't exist
-        if (localStorage.getItem("combs_placed") === null) {
-            localStorage.setItem("combs_placed", "true");
-        }
+        // if (localStorage.getItem("comb_placed") === null) {
+        //     localStorage.setItem("comb_placed", "true");
+        // }
         
         // Initial check when page loads
         updateElementsVisibility();
@@ -282,11 +282,20 @@
         // Listen for changes in localStorage from other tabs/windows
         window.addEventListener('storage', updateElementsVisibility);
 
-        // Position text randomly within a central area of the screen
+        // Position text randomly within the screen, preventing overflow
         const texts = document.querySelectorAll('.floating');
         texts.forEach(text => {
-            text.style.top = Math.floor(Math.random() * 70) + 10 + 'vh';
-            text.style.left = Math.floor(Math.random() * 70) + 10 + 'vw';
+            // Get element dimensions
+            const textWidth = text.offsetWidth;
+            const textHeight = text.offsetHeight;
+            
+            // Calculate maximum values to prevent overflow
+            const maxTop = Math.max(0, window.innerHeight - textHeight - 40); // 40px buffer
+            const maxLeft = Math.max(0, window.innerWidth - textWidth - 40); // 40px buffer
+            
+            // Set random positions that won't cause overflow
+            text.style.top = Math.floor(Math.random() * maxTop) + 'px';
+            text.style.left = Math.floor(Math.random() * maxLeft) + 'px';
         });
 
         if (getComputedStyle(document.body).display === 'none') {
