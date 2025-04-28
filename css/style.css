@@ -9,24 +9,34 @@ body {
   background-color: #000000;
   transition: background-color 2s ease;
 }
+
 @keyframes typing {
   from {
     width: 0;
   }
+
   to {
     width: 15vw;
   }
 }
 
 @keyframes blink-caret {
-  from, to { border-right-color: transparent; }
-  50% { border-right-color: white; }
+
+  from,
+  to {
+    border-right-color: transparent;
+  }
+
+  50% {
+    border-right-color: white;
+  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -36,6 +46,7 @@ body {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -59,16 +70,17 @@ body {
   display: inline-block;
   opacity: 0;
   animation: fadeIn 0.5s forwards;
-  margin-right: 0.25em; /* Add extra spacing between words */
+  margin-right: 0.25em;
+  /* Add extra spacing between words */
 }
 
 #spotify-iframe {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 1vh;
+  left: 2vw;
   width: 20vw;
-  height: auto;
-  border-radius: 12px;
+  height: 15vh;
+  border-radius: 1vw;
   z-index: 1000;
   max-width: 100%;
 }
@@ -85,7 +97,7 @@ body {
   transition: background 1s linear;
 }
 
-#pop{
+#pop {
   volume: 0.5;
 }
 
@@ -147,34 +159,34 @@ body {
   z-index: 7;
 }
 
-#libretagise{
+#libretagise {
   width: 2.5%;
   height: auto;
   z-index: 7;
 }
 
-#kirby{
+#kirby {
   width: 4%;
   height: auto;
-  z-index: 6; 
+  z-index: 6;
 }
 
-#sonny{
+#sonny {
   width: 1.5%;
   height: auto;
-  z-index: 6; 
+  z-index: 6;
 }
 
-#comb{
+#comb {
   width: 3%;
   height: auto;
-  z-index: 6; 
+  z-index: 6;
 }
 
-#scarf{
+#scarf {
   width: 5%;
   height: auto;
-  z-index: 6; 
+  z-index: 6;
 }
 
 /* #tata:hover, #rj:hover, #fruit:hover, #sakura:hover, #libretagise:hover, #meret:hover {
