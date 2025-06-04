@@ -24,7 +24,7 @@
 
 </head>
 
-<body>
+<body class="loading">
   <iframe id="spotify-iframe"
     src="https://open.spotify.com/embed/playlist/7jiQemqr9EFtd2zlzMEQ7h?utm_source=generator&autoplay=1" frameBorder="0"
     allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -69,7 +69,11 @@
   <img src="src/journal.png" alt="journal" id="journal" class="clickable-journal" />
   <div id="journal-modal" class="journal-modal hidden">
     <div class="journal-container">
-      <div id="current-date" class="journal-date"></div>
+      <div class="journal-header">
+        <button id="prev-entry" class="journal-nav-btn">←</button>
+        <div id="current-date" class="journal-date"></div>
+        <button id="next-entry" class="journal-nav-btn">→</button>
+      </div>
       <textarea id="journal-text" placeholder="mmmm..."></textarea>
     </div>
   </div>
@@ -107,6 +111,7 @@
 
 
     <!-- Scripts -->
+    <script src="js/loading.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
     <script src="js/positions.js"></script>
     <script src="js/journal.js"></script>

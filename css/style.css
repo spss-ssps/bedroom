@@ -10,6 +10,24 @@ body {
   transition: background-color 2s ease;
 }
 
+body.loading {
+  overflow: hidden;
+}
+
+body.loading #bookshelfside,
+body.loading #laptop,
+body.loading #journal,
+body.loading .draggable {
+  opacity: 0;
+}
+
+#bookshelfside,
+#laptop,
+#journal,
+.draggable {
+  transition: opacity 0.2s ease-in;
+}
+
 @keyframes typing {
   from {
     width: 0;

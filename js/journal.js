@@ -43,8 +43,8 @@ document.addEventListener('click', function (e) {
   const journalIcon = document.getElementById('journal');
 
   if (!modal.classList.contains('hidden') &&
-      !container.contains(e.target) &&
-      e.target !== journalIcon) {
+    !container.contains(e.target) &&
+    e.target !== journalIcon) {
     modal.classList.add('hidden');
   }
 });
@@ -78,8 +78,41 @@ document.addEventListener('keydown', function (e) {
 
   // Only update if a different valid entry is found
   if (formatDateKey(newDate) !== formatDateKey(currentViewedDate) &&
-      localStorage.getItem(formatDateKey(newDate))) {
+    localStorage.getItem(formatDateKey(newDate))) {
     currentViewedDate = newDate;
     updateJournalView();
   }
+});
+
+function findNearestEntry(direction) {
+  const startDate = new Date(currentViewedDate);
+  let checkDate = new Date(startDate);
+  const limit = direction === 'prev' ? new Date(2020, 0, 1) : new Date();
+  const increment = direction === 'prev' ? -1 : 1;
+
+  // Step through days one at a time
+  while ((direction === 'prev' && checkDate >= limit) ||
+    (direction === 'next' && checkDate <= limit)) {
+
+    checkDate.setDate(checkDate.getDate() + increment);
+    const key = formatDateKey(checkDate);
+
+    // If we found an entry, use that date
+    if (localStorage.getItem(key)) {
+      currentViewedDate = new Date(checkDate);
+      updateJournalView();
+      return true;
+    }
+  }
+
+  return false; // No entry found
+}
+
+// Then use it in your event handlers
+document.getElementById('prev-entry').addEventListener('click', function () {
+  findNearestEntry('prev');
+});
+
+document.getElementById('next-entry').addEventListener('click', function () {
+  findNearestEntry('next');
 });
