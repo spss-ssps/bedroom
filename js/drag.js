@@ -126,7 +126,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//clearlocalstorage
+// clearlocalstorage
 // function clearLocalStorage() {
 //   localStorage.clear();
 //   console.log('All LocalStorage items cleared');
