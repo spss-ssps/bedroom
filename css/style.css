@@ -115,10 +115,6 @@ body.loading .draggable {
   transition: background 1s linear;
 }
 
-#pop {
-  volume: 0.5;
-}
-
 #bedroom {
   position: fixed;
   top: 50%;

@@ -7,4 +7,18 @@
     right: 0;
     /* Ensure it stretches to the right side */
   }
+
+  .draggable {
+    touch-action: none;
+    user-select: none;
+  }
+
+  /* Add this new style for touch feedback */
+  .draggable.is-dragging {
+    opacity: 0.8;
+    transform: scale(1.1);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 100;
+    /* Bring to front while dragging */
+  }
 }
