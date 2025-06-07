@@ -89,7 +89,6 @@ body.loading .draggable {
   opacity: 0;
   animation: fadeIn 0.5s forwards;
   margin-right: 0.25em;
-  /* Add extra spacing between words */
 }
 
 #spotify-iframe {
